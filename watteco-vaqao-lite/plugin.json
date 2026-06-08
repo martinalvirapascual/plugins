@@ -12,9 +12,7 @@
     "metadata": {
         "name": "Watteco VAQAO-MULTI-LITE",
         "description": "Watteco VAQA'O Multi Lite is a LoRaWAN® device that measures temperature, humidity, atmospheric pressure, IAQ, CO2, luminosity, and motion in indoor environments, transmitting data over public or private LoRaWAN® networks.",
-    "image": "assets/vaqao-lite.png",
-    "category": "devices",
-    "vendor": "watteco"
+        "image": ""
     },
     "resources": {
         "products": [
@@ -27,6 +25,41 @@
                 "name": "Watteco VAQAO-MULTI-LITE",
                 "product": "watteco_vaqao_multi_lite",
                 "profile": {
+                    "api": {
+                        "downlink": {
+                            "enabled": true,
+                            "handle_connectivity": false,
+                            "request": {
+                                "data": {
+                                    "path": "/downlink",
+                                    "payload": "{\r\n    \"data\"    : \"{{payload.data=\"\"}}\",\r\n    \"port\"    :  {{payload.port=125}},\r\n    \"priority\":  {{payload.priority=3}},\r\n    \"confirmed\" :  {{payload.confirmed=false}},\r\n    \"uplink\"  :  {{property.uplink}} \r\n}",
+                                    "payload_function": "",
+                                    "payload_type": "",
+                                    "plugin": "{{property.uplink.source}}",
+                                    "target": "plugin_endpoint"
+                                }
+                            },
+                            "response": {
+                                "data": {}
+                            }
+                        },
+                        "uplink": {
+                            "enabled": true,
+                            "handle_connectivity": true,
+                            "request": {
+                                "data": {
+                                    "payload": "{{payload}}",
+                                    "payload_function": "",
+                                    "payload_type": "source_payload",
+                                    "resource_stream": "uplink",
+                                    "target": "resource_stream"
+                                }
+                            },
+                            "response": {
+                                "data": {}
+                            }
+                        }
+                    },
                     "buckets": {
                         "watteco_vaqao_multi_lite_data": {
                             "backend": "mongodb",
