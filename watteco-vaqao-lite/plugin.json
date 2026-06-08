@@ -1,44 +1,37 @@
 {
-    "name": "watteco-vaqao-lite",
+    "name": "watteco-vaqao-multi-lite",
     "version": "1.0.0",
-    "description": "The WATTECO Vaqa’O Lite sensor is a LoRaWAN® device that measures the temperature, relative humidity, and carbon dioxide (CO2) in the ambient air of a room, in a building, an apartment, or a house. It allows Indoor Air Quality (IAQ) monitoring.",
+    "description": "Watteco VAQA'O Multi Lite is a LoRaWAN® device that measures temperature, humidity, atmospheric pressure, IAQ, CO2, luminosity, and motion in indoor environments, transmitting data over public or private LoRaWAN® networks.",
     "author": "Thinger.io",
     "license": "MIT",
     "repository": {
         "type": "git",
         "url": "https://github.com/thinger-io/plugins.git",
-        "directory": "watteco-vaqao-lite"
+        "directory": "watteco-vaqao-multi-lite"
     },
     "metadata": {
-        "name": "Watteco VAQAO-LITE",
-        "description": "The WATTECO Vaqa’O Lite sensor is a LoRaWAN® device that measures the temperature, relative humidity, and carbon dioxide (CO2) in the ambient air of a room, in a building, an apartment, or a house. It allows Indoor Air Quality (IAQ) monitoring.",
-        "image": "assets/vaqao-lite.png",
-        "category": "devices",
-        "vendor": "watteco"
+        "name": "Watteco VAQAO-MULTI-LITE",
+        "description": "Watteco VAQA'O Multi Lite is a LoRaWAN® device that measures temperature, humidity, atmospheric pressure, IAQ, CO2, luminosity, and motion in indoor environments, transmitting data over public or private LoRaWAN® networks.",
+    "image": "assets/vaqao-lite.png",
+    "category": "devices",
+    "vendor": "watteco"
     },
     "resources": {
         "products": [
             {
-                "description": "The WATTECO Vaqa’O Lite sensor is a LoRaWAN® device that measures the temperature, relative humidity, and carbon dioxide (CO2) in the ambient air of a room, in a building, an apartment, or a house. It allows Indoor Air Quality (IAQ) monitoring.",
+                "config": {
+                    "icons": []
+                },
+                "description": "Watteco VAQA'O Multi Lite is a LoRaWAN® device that measures temperature, humidity, atmospheric pressure, IAQ, CO2, luminosity, and motion in indoor environments, transmitting data over public or private LoRaWAN® networks.",
                 "enabled": true,
-                "name": "Watteco VAQAO-LITE",
-                "product": "watteco_vaqao_lite",
+                "name": "Watteco VAQAO-MULTI-LITE",
+                "product": "watteco_vaqao_multi_lite",
                 "profile": {
-                    "autoprovisions": {
-                        "device_autoprovisioning": {
-                            "config": {
-                                "mode": "pattern",
-                                "pattern": "vaqao_lite_.*"
-                            },
-                            "enabled": true
-                        }
-                    },
                     "buckets": {
-                        "watteco_vaqao_lite_data": {
+                        "watteco_vaqao_multi_lite_data": {
                             "backend": "mongodb",
                             "data": {
                                 "payload": "{{payload}}",
-                                "payload_function": "",
                                 "payload_type": "source_payload",
                                 "resource_stream": "uplink_decoded",
                                 "source": "resource_stream"
@@ -58,7 +51,7 @@
                         "version": "1.0"
                     },
                     "flows": {
-                        "watteco_vaqao_lite_decoder": {
+                        "watteco_vaqao_multi_lite_decoder": {
                             "data": {
                                 "payload": "{{payload}}",
                                 "payload_function": "decodeThingerUplink",
@@ -70,7 +63,6 @@
                             "enabled": true,
                             "sink": {
                                 "payload": "{{payload}}",
-                                "payload_function": "",
                                 "payload_type": "source_payload",
                                 "resource_stream": "uplink_decoded",
                                 "target": "resource_stream"
@@ -82,7 +74,6 @@
                         "uplink": {
                             "data": {
                                 "payload": "{{payload}}",
-                                "payload_function": "",
                                 "payload_type": "source_payload",
                                 "resource": "uplink",
                                 "source": "resource",
@@ -102,14 +93,14 @@
                             "value": {
                                 "tabs": [
                                     {
-                                        "name": "Overview",
+                                        "name": "Environmental Monitoring",
                                         "widgets": [
                                             {
                                                 "layout": {
                                                     "col": 0,
-                                                    "row": 5,
-                                                    "sizeX": 3,
-                                                    "sizeY": 5
+                                                    "row": 0,
+                                                    "sizeX": 2,
+                                                    "sizeY": 4
                                                 },
                                                 "panel": {
                                                     "color": "#ffffff",
@@ -121,38 +112,22 @@
                                                 },
                                                 "properties": {
                                                     "decimalPlaces": 1,
-                                                    "enableExtraTextColor": false,
-                                                    "enableIconColor": false,
-                                                    "enableIconSize": false,
-                                                    "extraText": "",
-                                                    "extraTextColor": "#1E313E",
-                                                    "extraTextColorConditions": [],
-                                                    "extraTextConditions": [],
-                                                    "extraTextPosition": "above-value",
-                                                    "extraTextSize": "20px",
-                                                    "extraTextWeight": "font-light",
                                                     "icon": "fas fa-thermometer-half",
                                                     "iconColor": "#e74c3c",
-                                                    "iconColorConditions": [],
-                                                    "iconConditions": [],
-                                                    "iconGap": "15px",
-                                                    "iconPosition": "before-value",
-                                                    "iconSize": "75px",
-                                                    "iconVerticalOffset": "0px",
-                                                    "link": "",
+                                                    "iconPosition": "above-value",
+                                                    "iconSize": "45px",
                                                     "textAlign": "center",
                                                     "textColor": "#1E313E",
-                                                    "textColorConditions": [],
-                                                    "textSize": "75px",
+                                                    "textSize": "50px",
                                                     "textWeight": "font-light",
                                                     "unit": "°C",
-                                                    "unitSize": "30px"
+                                                    "unitSize": "20px"
                                                 },
                                                 "sources": [
                                                     {
                                                         "bucket": {
                                                             "backend": "mongodb",
-                                                            "id": "watteco_vaqao_lite_data",
+                                                            "id": "watteco_vaqao_multi_lite_data",
                                                             "mapping": "temperature_1",
                                                             "tags": {
                                                                 "device": [],
@@ -160,7 +135,6 @@
                                                             }
                                                         },
                                                         "color": "#e74c3c",
-                                                        "name": "Temperature",
                                                         "source": "bucket",
                                                         "timespan": {
                                                             "mode": "latest"
@@ -171,10 +145,10 @@
                                             },
                                             {
                                                 "layout": {
-                                                    "col": 0,
+                                                    "col": 2,
                                                     "row": 0,
-                                                    "sizeX": 3,
-                                                    "sizeY": 5
+                                                    "sizeX": 2,
+                                                    "sizeY": 4
                                                 },
                                                 "panel": {
                                                     "color": "#ffffff",
@@ -186,38 +160,22 @@
                                                 },
                                                 "properties": {
                                                     "decimalPlaces": 1,
-                                                    "enableExtraTextColor": false,
-                                                    "enableIconColor": false,
-                                                    "enableIconSize": false,
-                                                    "extraText": "",
-                                                    "extraTextColor": "#1E313E",
-                                                    "extraTextColorConditions": [],
-                                                    "extraTextConditions": [],
-                                                    "extraTextPosition": "above-value",
-                                                    "extraTextSize": "20px",
-                                                    "extraTextWeight": "font-light",
                                                     "icon": "fas fa-tint",
                                                     "iconColor": "#3498db",
-                                                    "iconColorConditions": [],
-                                                    "iconConditions": [],
-                                                    "iconGap": "15px",
-                                                    "iconPosition": "before-value",
-                                                    "iconSize": "75px",
-                                                    "iconVerticalOffset": "0px",
-                                                    "link": "",
+                                                    "iconPosition": "above-value",
+                                                    "iconSize": "45px",
                                                     "textAlign": "center",
                                                     "textColor": "#1E313E",
-                                                    "textColorConditions": [],
-                                                    "textSize": "75px",
+                                                    "textSize": "50px",
                                                     "textWeight": "font-light",
                                                     "unit": "%",
-                                                    "unitSize": "30px"
+                                                    "unitSize": "20px"
                                                 },
                                                 "sources": [
                                                     {
                                                         "bucket": {
                                                             "backend": "mongodb",
-                                                            "id": "watteco_vaqao_lite_data",
+                                                            "id": "watteco_vaqao_multi_lite_data",
                                                             "mapping": "humidity_1",
                                                             "tags": {
                                                                 "device": [],
@@ -225,7 +183,6 @@
                                                             }
                                                         },
                                                         "color": "#3498db",
-                                                        "name": "Humidity",
                                                         "source": "bucket",
                                                         "timespan": {
                                                             "mode": "latest"
@@ -236,10 +193,10 @@
                                             },
                                             {
                                                 "layout": {
-                                                    "col": 3,
+                                                    "col": 4,
                                                     "row": 0,
-                                                    "sizeX": 3,
-                                                    "sizeY": 5
+                                                    "sizeX": 2,
+                                                    "sizeY": 4
                                                 },
                                                 "panel": {
                                                     "color": "#ffffff",
@@ -247,42 +204,26 @@
                                                     "showOffline": {
                                                         "type": "none"
                                                     },
-                                                    "title": "CO2 Concentration"
+                                                    "title": "CO2"
                                                 },
                                                 "properties": {
                                                     "decimalPlaces": 0,
-                                                    "enableExtraTextColor": false,
-                                                    "enableIconColor": false,
-                                                    "enableIconSize": false,
-                                                    "extraText": "",
-                                                    "extraTextColor": "#1E313E",
-                                                    "extraTextColorConditions": [],
-                                                    "extraTextConditions": [],
-                                                    "extraTextPosition": "above-value",
-                                                    "extraTextSize": "20px",
-                                                    "extraTextWeight": "font-light",
-                                                    "icon": "fas fa-cloud",
+                                                    "icon": "fas fa-wind",
                                                     "iconColor": "#95a5a6",
-                                                    "iconColorConditions": [],
-                                                    "iconConditions": [],
-                                                    "iconGap": "15px",
-                                                    "iconPosition": "before-value",
-                                                    "iconSize": "75px",
-                                                    "iconVerticalOffset": "0px",
-                                                    "link": "",
+                                                    "iconPosition": "above-value",
+                                                    "iconSize": "45px",
                                                     "textAlign": "center",
                                                     "textColor": "#1E313E",
-                                                    "textColorConditions": [],
-                                                    "textSize": "75px",
+                                                    "textSize": "50px",
                                                     "textWeight": "font-light",
                                                     "unit": "ppm",
-                                                    "unitSize": "25px"
+                                                    "unitSize": "20px"
                                                 },
                                                 "sources": [
                                                     {
                                                         "bucket": {
                                                             "backend": "mongodb",
-                                                            "id": "watteco_vaqao_lite_data",
+                                                            "id": "watteco_vaqao_multi_lite_data",
                                                             "mapping": "CO2",
                                                             "tags": {
                                                                 "device": [],
@@ -290,140 +231,6 @@
                                                             }
                                                         },
                                                         "color": "#95a5a6",
-                                                        "name": "CO2",
-                                                        "source": "bucket",
-                                                        "timespan": {
-                                                            "mode": "latest"
-                                                        }
-                                                    }
-                                                ],
-                                                "type": "text"
-                                            },
-                                            {
-                                                "layout": {
-                                                    "col": 3,
-                                                    "row": 5,
-                                                    "sizeX": 3,
-                                                    "sizeY": 5
-                                                },
-                                                "panel": {
-                                                    "color": "#ffffff",
-                                                    "currentColor": "#ffffff",
-                                                    "showOffline": {
-                                                        "type": "none"
-                                                    },
-                                                    "title": "Indoor Air Quality Index"
-                                                },
-                                                "properties": {
-                                                    "decimalPlaces": 0,
-                                                    "enableExtraTextColor": true,
-                                                    "enableIconColor": false,
-                                                    "enableIconSize": false,
-                                                    "extraText": "",
-                                                    "extraTextColor": "#1E313E",
-                                                    "extraTextColorConditions": [],
-                                                    "extraTextConditions": [
-                                                        {
-                                                            "color": "#27ae60",
-                                                            "max": 50,
-                                                            "min": 0,
-                                                            "text": "Excellent"
-                                                        },
-                                                        {
-                                                            "color": "#2ecc71",
-                                                            "max": 100,
-                                                            "min": 51,
-                                                            "text": "Good"
-                                                        },
-                                                        {
-                                                            "color": "#f39c12",
-                                                            "max": 150,
-                                                            "min": 101,
-                                                            "text": "Lightly Polluted"
-                                                        },
-                                                        {
-                                                            "color": "#e67e22",
-                                                            "max": 200,
-                                                            "min": 151,
-                                                            "text": "Moderately Polluted"
-                                                        },
-                                                        {
-                                                            "color": "#e74c3c",
-                                                            "max": 250,
-                                                            "min": 201,
-                                                            "text": "Heavily Polluted"
-                                                        },
-                                                        {
-                                                            "color": "#c0392b",
-                                                            "max": 500,
-                                                            "min": 251,
-                                                            "text": "Severely Polluted"
-                                                        }
-                                                    ],
-                                                    "extraTextPosition": "below-value",
-                                                    "extraTextSize": "24px",
-                                                    "extraTextWeight": "font-normal",
-                                                    "icon": "fas fa-wind",
-                                                    "iconColor": "#f39c12",
-                                                    "iconColorConditions": [],
-                                                    "iconConditions": [],
-                                                    "iconGap": "15px",
-                                                    "iconPosition": "before-value",
-                                                    "iconSize": "65px",
-                                                    "iconVerticalOffset": "0px",
-                                                    "link": "",
-                                                    "textAlign": "center",
-                                                    "textColor": "#1E313E",
-                                                    "textColorConditions": [
-                                                        {
-                                                            "color": "#27ae60",
-                                                            "max": 50,
-                                                            "min": 0
-                                                        },
-                                                        {
-                                                            "color": "#2ecc71",
-                                                            "max": 100,
-                                                            "min": 51
-                                                        },
-                                                        {
-                                                            "color": "#f39c12",
-                                                            "max": 150,
-                                                            "min": 101
-                                                        },
-                                                        {
-                                                            "color": "#e67e22",
-                                                            "max": 200,
-                                                            "min": 151
-                                                        },
-                                                        {
-                                                            "color": "#e74c3c",
-                                                            "max": 250,
-                                                            "min": 201
-                                                        },
-                                                        {
-                                                            "color": "#c0392b",
-                                                            "max": 500,
-                                                            "min": 251
-                                                        }
-                                                    ],
-                                                    "textSize": "65px",
-                                                    "textWeight": "font-bold",
-                                                    "unit": "",
-                                                    "unitSize": "20px"
-                                                },
-                                                "sources": [
-                                                    {
-                                                        "bucket": {
-                                                            "backend": "mongodb",
-                                                            "id": "watteco_vaqao_lite_data",
-                                                            "mapping": "IAQ",
-                                                            "tags": {
-                                                                "device": [],
-                                                                "group": []
-                                                            }
-                                                        },
-                                                        "color": "#f39c12",
-                                                        "name": "IAQ",
                                                         "source": "bucket",
                                                         "timespan": {
                                                             "mode": "latest"
@@ -435,9 +242,9 @@
                                             {
                                                 "layout": {
                                                     "col": 0,
-                                                    "row": 10,
-                                                    "sizeX": 6,
-                                                    "sizeY": 6
+                                                    "row": 4,
+                                                    "sizeX": 2,
+                                                    "sizeY": 4
                                                 },
                                                 "panel": {
                                                     "color": "#ffffff",
@@ -445,14 +252,189 @@
                                                     "showOffline": {
                                                         "type": "none"
                                                     },
-                                                    "title": "IAQ Reference Guide"
+                                                    "title": "Atmospheric Pressure"
                                                 },
                                                 "properties": {
-                                                    "source": "code",
-                                                    "template": "<div style=\"padding:15px; font-family:Arial, sans-serif;\">\n  <div style=\"display:flex; align-items:center; margin-bottom:8px;\">\n    <div style=\"width:20px; height:20px; background-color:#27ae60; border-radius:3px; margin-right:10px;\"></div>\n    <span style=\"font-size:14px;\">0-50: Excellent</span>\n  </div>\n  <div style=\"display:flex; align-items:center; margin-bottom:8px;\">\n    <div style=\"width:20px; height:20px; background-color:#2ecc71; border-radius:3px; margin-right:10px;\"></div>\n    <span style=\"font-size:14px;\">51-100: Good</span>\n  </div>\n  <div style=\"display:flex; align-items:center; margin-bottom:8px;\">\n    <div style=\"width:20px; height:20px; background-color:#f39c12; border-radius:3px; margin-right:10px;\"></div>\n    <span style=\"font-size:14px;\">101-150: Lightly Polluted</span>\n  </div>\n  <div style=\"display:flex; align-items:center; margin-bottom:8px;\">\n    <div style=\"width:20px; height:20px; background-color:#e67e22; border-radius:3px; margin-right:10px;\"></div>\n    <span style=\"font-size:14px;\">151-200: Moderately Polluted</span>\n  </div>\n  <div style=\"display:flex; align-items:center; margin-bottom:8px;\">\n    <div style=\"width:20px; height:20px; background-color:#e74c3c; border-radius:3px; margin-right:10px;\"></div>\n    <span style=\"font-size:14px;\">201-250: Heavily Polluted</span>\n  </div>\n  <div style=\"display:flex; align-items:center;\">\n    <div style=\"width:20px; height:20px; background-color:#c0392b; border-radius:3px; margin-right:10px;\"></div>\n    <span style=\"font-size:14px;\">251+: Severely Polluted</span>\n  </div>\n</div>"
+                                                    "decimalPlaces": 1,
+                                                    "icon": "fas fa-compress-arrows-alt",
+                                                    "iconColor": "#34495e",
+                                                    "iconPosition": "above-value",
+                                                    "iconSize": "45px",
+                                                    "textAlign": "center",
+                                                    "textColor": "#1E313E",
+                                                    "textSize": "50px",
+                                                    "textWeight": "font-light",
+                                                    "unit": "hPa",
+                                                    "unitSize": "20px"
                                                 },
-                                                "sources": [],
-                                                "type": "html_time"
+                                                "sources": [
+                                                    {
+                                                        "bucket": {
+                                                            "backend": "mongodb",
+                                                            "id": "watteco_vaqao_multi_lite_data",
+                                                            "mapping": "pressure",
+                                                            "tags": {
+                                                                "device": [],
+                                                                "group": []
+                                                            }
+                                                        },
+                                                        "color": "#34495e",
+                                                        "source": "bucket",
+                                                        "timespan": {
+                                                            "mode": "latest"
+                                                        }
+                                                    }
+                                                ],
+                                                "type": "text"
+                                            },
+                                            {
+                                                "layout": {
+                                                    "col": 2,
+                                                    "row": 4,
+                                                    "sizeX": 2,
+                                                    "sizeY": 4
+                                                },
+                                                "panel": {
+                                                    "color": "#ffffff",
+                                                    "currentColor": "#ffffff",
+                                                    "showOffline": {
+                                                        "type": "none"
+                                                    },
+                                                    "title": "Indoor Air Quality"
+                                                },
+                                                "properties": {
+                                                    "decimalPlaces": 0,
+                                                    "icon": "fas fa-lungs",
+                                                    "iconColor": "#16a085",
+                                                    "iconPosition": "above-value",
+                                                    "iconSize": "45px",
+                                                    "textAlign": "center",
+                                                    "textColor": "#1E313E",
+                                                    "textSize": "50px",
+                                                    "textWeight": "font-light",
+                                                    "unit": "IAQ",
+                                                    "unitSize": "20px"
+                                                },
+                                                "sources": [
+                                                    {
+                                                        "bucket": {
+                                                            "backend": "mongodb",
+                                                            "id": "watteco_vaqao_multi_lite_data",
+                                                            "mapping": "IAQ",
+                                                            "tags": {
+                                                                "device": [],
+                                                                "group": []
+                                                            }
+                                                        },
+                                                        "color": "#16a085",
+                                                        "source": "bucket",
+                                                        "timespan": {
+                                                            "mode": "latest"
+                                                        }
+                                                    }
+                                                ],
+                                                "type": "text"
+                                            },
+                                            {
+                                                "layout": {
+                                                    "col": 4,
+                                                    "row": 4,
+                                                    "sizeX": 2,
+                                                    "sizeY": 4
+                                                },
+                                                "panel": {
+                                                    "color": "#ffffff",
+                                                    "currentColor": "#ffffff",
+                                                    "showOffline": {
+                                                        "type": "none"
+                                                    },
+                                                    "title": "Illuminance"
+                                                },
+                                                "properties": {
+                                                    "decimalPlaces": 0,
+                                                    "icon": "fas fa-sun",
+                                                    "iconColor": "#f39c12",
+                                                    "iconPosition": "above-value",
+                                                    "iconSize": "45px",
+                                                    "textAlign": "center",
+                                                    "textColor": "#1E313E",
+                                                    "textSize": "50px",
+                                                    "textWeight": "font-light",
+                                                    "unit": "lux",
+                                                    "unitSize": "20px"
+                                                },
+                                                "sources": [
+                                                    {
+                                                        "bucket": {
+                                                            "backend": "mongodb",
+                                                            "id": "watteco_vaqao_multi_lite_data",
+                                                            "mapping": "illuminance",
+                                                            "tags": {
+                                                                "device": [],
+                                                                "group": []
+                                                            }
+                                                        },
+                                                        "color": "#f39c12",
+                                                        "source": "bucket",
+                                                        "timespan": {
+                                                            "mode": "latest"
+                                                        }
+                                                    }
+                                                ],
+                                                "type": "text"
+                                            },
+                                            {
+                                                "layout": {
+                                                    "col": 0,
+                                                    "row": 8,
+                                                    "sizeX": 6,
+                                                    "sizeY": 4
+                                                },
+                                                "panel": {
+                                                    "color": "#ffffff",
+                                                    "currentColor": "#ffffff",
+                                                    "showOffline": {
+                                                        "type": "none"
+                                                    },
+                                                    "title": "Occupancy"
+                                                },
+                                                "properties": {
+                                                    "color": "#95a5a6",
+                                                    "colors": [
+                                                        {
+                                                            "blink": false,
+                                                            "color": "#95a5a6",
+                                                            "max": 0,
+                                                            "min": 0
+                                                        },
+                                                        {
+                                                            "blink": false,
+                                                            "color": "#27ae60",
+                                                            "max": 1,
+                                                            "min": 1
+                                                        }
+                                                    ],
+                                                    "size": "100px"
+                                                },
+                                                "sources": [
+                                                    {
+                                                        "bucket": {
+                                                            "backend": "mongodb",
+                                                            "id": "watteco_vaqao_multi_lite_data",
+                                                            "mapping": "occupancy",
+                                                            "tags": {
+                                                                "device": [],
+                                                                "group": []
+                                                            }
+                                                        },
+                                                        "color": "#27ae60",
+                                                        "source": "bucket",
+                                                        "timespan": {
+                                                            "mode": "latest"
+                                                        }
+                                                    }
+                                                ],
+                                                "type": "led"
                                             }
                                         ]
                                     }
